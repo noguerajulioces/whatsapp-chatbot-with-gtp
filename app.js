@@ -27,6 +27,8 @@ const flowPrincipal = addKeyword(EVENTS.WELCOME)
 
         const response = await chat(prompt, contextMessages);
 
+        console.log("response: ", response);
+        
         await ctxFn.flowDynamic(response);
     })
 

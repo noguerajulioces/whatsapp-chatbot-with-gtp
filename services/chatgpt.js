@@ -9,14 +9,15 @@ const chat = async (prompt, messages) => {
       apiKey: openaiApiKey,
     });
 
+    console.log("msg ", messages);
     // Asegurarse de que todos los mensajes tengan un content válido
     const sanitizedMessages = messages.map(msg => ({
       ...msg,
-      content: msg.content || "Default message content"
+      content: msg.context
     }));
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4-turbo",
       messages: [
         { role: "system", content: prompt },
         ...sanitizedMessages
